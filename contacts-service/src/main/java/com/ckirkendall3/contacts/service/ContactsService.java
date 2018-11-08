@@ -1,4 +1,3 @@
-
 package com.ckirkendall3.contacts.service;
 
 import com.ckirkendall3.contacts.dataservice.ContactsDataservice;
@@ -34,7 +33,7 @@ public class ContactsService {
 
     private Comparator<Contact> getComparator(SortType sortBy) {
         Comparator<Contact> comparator;
-        switch(sortBy) {
+        switch (sortBy) {
             case GENDER:
                 comparator = new SortbyGender();
                 break;
@@ -52,22 +51,18 @@ public class ContactsService {
     /**
      * Comparator for sorting by gender.
      */
-    private class SortbyGender implements Comparator<Contact>
-    {
-        public int compare(Contact a, Contact b)
-        {
+    private class SortbyGender implements Comparator<Contact> {
+        public int compare(Contact a, Contact b) {
             int retval = a.getGender().compareTo(b.getGender());
-            return retval == 0?a.getLastName().compareTo(b.getLastName()):retval;
+            return retval == 0 ? a.getLastName().compareTo(b.getLastName()) : retval;
         }
     }
 
     /**
      * Comparator for sorting by gender.
      */
-    private class SortbyDOB implements Comparator<Contact>
-    {
-        public int compare(Contact a, Contact b)
-        {
+    private class SortbyDOB implements Comparator<Contact> {
+        public int compare(Contact a, Contact b) {
             return a.getDateOfBirth().compareTo(b.getDateOfBirth());
         }
     }
@@ -75,10 +70,8 @@ public class ContactsService {
     /**
      * Comparator for sorting by gender.
      */
-    private class SortbyLastName implements Comparator<Contact>
-    {
-        public int compare(Contact a, Contact b)
-        {
+    private class SortbyLastName implements Comparator<Contact> {
+        public int compare(Contact a, Contact b) {
             return b.getLastName().compareTo(a.getLastName());
         }
     }

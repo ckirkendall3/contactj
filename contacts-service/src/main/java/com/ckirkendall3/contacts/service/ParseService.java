@@ -1,4 +1,3 @@
-
 package com.ckirkendall3.contacts.service;
 
 import com.ckirkendall3.contacts.dto.Contact;
@@ -23,6 +22,7 @@ import static java.time.temporal.ChronoField.*;
 public class ParseService {
 
     public static final DateTimeFormatter DATE_FORMATTER;
+
     static {
         DATE_FORMATTER = new DateTimeFormatterBuilder()
                 .parseLenient()
@@ -38,16 +38,16 @@ public class ParseService {
         Contact contact = new Contact();
 
         String[] columns;
-        if ( line.contains(",") ) {
+        if (line.contains(",")) {
             columns = line.split(",");
-        } else if ( line.contains("|") ) {
+        } else if (line.contains("|")) {
             columns = line.split("\\|");
         } else {
             // Must be space delimited
             columns = line.trim().split(" ");
         }
 
-        if ( columns.length != 5 ) {
+        if (columns.length != 5) {
             throw new IllegalArgumentException("Invalid number of elements: " + line);
         }
 
@@ -62,8 +62,8 @@ public class ParseService {
     public List<Contact> parseFile(String fileName) throws IOException {
         Scanner s = new Scanner(new File(fileName));
         s.useDelimiter(System.getProperty("line.separator"));
-        ArrayList<String> lines = new ArrayList<String>();
-        while (s.hasNext()){
+        ArrayList<String> lines = new ArrayList<>();
+        while (s.hasNext()) {
             lines.add(s.next());
         }
         s.close();

@@ -4,7 +4,13 @@ import com.ckirkendall3.contacts.dto.Contact;
 import com.ckirkendall3.contacts.service.ContactsService;
 import com.ckirkendall3.contacts.service.ParseService;
 import com.ckirkendall3.contacts.service.SortType;
-import org.apache.commons.cli.*;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.MissingArgumentException;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -17,13 +23,13 @@ import java.util.List;
  * Contact CLI application
  */
 @Component
-public class ContactsApp {
+public class ContactsCliApp {
 
     private ContactsService service;
     private ParseService parseService;
 
     @Autowired
-    public ContactsApp(ContactsService service, ParseService parseService) {
+    public ContactsCliApp(ContactsService service, ParseService parseService) {
         this.service = service;
         this.parseService = parseService;
     }
@@ -39,13 +45,14 @@ public class ContactsApp {
                 "com.ckirkendall3.contacts.service",
                 "com.ckirkendall3.contacts.cli"); // Use annotated beans from the specified package
 
-        ContactsApp app = ctx.getBean(ContactsApp.class);
+        ContactsCliApp app = ctx.getBean(ContactsCliApp.class);
         int retval = app.run(args);
         System.exit(retval);
     }
 
     /**
      * Main run routine of application class
+     *
      * @param args command line arguments
      */
     public int run(String[] args) {
@@ -82,6 +89,7 @@ public class ContactsApp {
 
     /**
      * Parse the command line arguments
+     *
      * @throws ParseException argument parsing failed
      */
     private CommandLine parseArguments(String[] args) throws ParseException {
@@ -94,7 +102,7 @@ public class ContactsApp {
      */
     private Options getOptions() {
         Options options = new Options();
-        options.addOption("f", "filename", true,"file name to load data from");
+        options.addOption("f", "filename", true, "file name to load data from");
         return options;
     }
 

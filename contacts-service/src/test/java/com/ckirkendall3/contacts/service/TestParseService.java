@@ -19,16 +19,16 @@ public class TestParseService {
 
     private final ParseService parseService = new ParseService();
 
-    private final String contactsString =
-            "Reese, John, male, black, 9/26/1968\n" +
-                    "Finch, Harold, male, gray, 9/7/1954\n" +
-                    "Shaw, Sameen, female, red, 1/10/1980\n" +
-                    "Carter, Joss, female, blue, 9/11/1970";
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
 
     @Test
     public void testFileParsing() throws IOException {
+        final String contactsString =
+                "Reese, John, male, black, 9/26/1968\n" +
+                        "Finch, Harold, male, gray, 9/7/1954\n" +
+                        "Shaw, Sameen, female, red, 1/10/1980\n" +
+                        "Carter, Joss, female, blue, 9/11/1970";
         final File tempFile = tempFolder.newFile("contacts.txt");
         FileCopyUtils.copy(contactsString.getBytes(), tempFile);
         List<Contact> contacts =
@@ -50,11 +50,11 @@ public class TestParseService {
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidNumberOfElements() {
-        Contact contact = parseService.parseContact("one, two, three");
+        parseService.parseContact("one, two, three");
     }
 
     @Test(expected = DateTimeParseException.class)
     public void testInvalidDate() {
-        Contact contact = parseService.parseContact("Jones, Bob, male, white, test");
+        parseService.parseContact("Jones, Bob, male, white, test");
     }
 }

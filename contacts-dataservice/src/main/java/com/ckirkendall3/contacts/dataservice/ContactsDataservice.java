@@ -1,4 +1,3 @@
-
 package com.ckirkendall3.contacts.dataservice;
 
 import com.ckirkendall3.contacts.dto.Contact;
@@ -21,6 +20,7 @@ public class ContactsDataservice {
 
     /**
      * Insert a contact into the list of contacts
+     *
      * @param contact contact to insert
      */
     public void insertContact(Contact contact) {
@@ -31,6 +31,7 @@ public class ContactsDataservice {
 
     /**
      * Retrieve all the contacts
+     *
      * @return List of all contacts
      */
     public List<Contact> getAllContacts() {

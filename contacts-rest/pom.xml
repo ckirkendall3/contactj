@@ -9,9 +9,9 @@
         <version>0.1.0</version>
     </parent>
 
-    <artifactId>contacts-service</artifactId>
-    <name>Contact Service Workers</name>
-    <description>Service workers to handle contact requests</description>
+    <artifactId>contacts-rest</artifactId>
+    <name>Contacts RESTful API</name>
+    <description>RESTful controllers to handle html requests</description>
 
     <dependencies>
         <dependency>
@@ -21,12 +21,16 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>contacts-dataservice</artifactId>
+            <artifactId>contacts-service</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
