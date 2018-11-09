@@ -9,6 +9,8 @@ The contacts-cli module builds a jar that can be used to ingest a file of record
 * LastName, FirstName, Gender, FavoriteColor, DateOfBirth
 * LastName FirstName Gender FavoriteColor DateOfBirth
 
+The program will then output the list of records sorted by gender, then sorted by birth date, then sorted by last name descending.
+
 ## SpringBoot RESTful application
 
 The contacts-app module builds a spring boot jar that implements a simple RESTful server with the following endpoints:
