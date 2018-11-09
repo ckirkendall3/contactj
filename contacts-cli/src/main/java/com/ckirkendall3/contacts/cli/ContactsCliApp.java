@@ -66,7 +66,7 @@ public class ContactsCliApp {
                 fileContacts.forEach(contact -> service.insertContact(contact));
 
                 // Print out the contacts in all the sort orders
-                Arrays.stream(SortType.values()).forEach(sort -> printContacts(service.getSortedContacts(sort)));
+                Arrays.stream(SortType.values()).forEach(sort -> printContacts(service.getSortedContacts(sort), sort));
             } else {
                 throw new MissingArgumentException("Filename argument missing.");
             }
@@ -79,8 +79,9 @@ public class ContactsCliApp {
         return 0;
     }
 
-    private void printContacts(List<Contact> sortedContacts) {
-        System.out.printf("\n%-19s %-19s %-19s %-19s %-19s\n",
+    private void printContacts(List<Contact> sortedContacts, SortType sortBy) {
+        System.out.println("\nRecords sorted by " + sortBy.name().toLowerCase());
+        System.out.printf("%-19s %-19s %-19s %-19s %-19s\n",
                 "Last Name", "First Name", "Gender", "Favorite Color", "Date of Birth");
         sortedContacts.forEach(c ->
                 System.out.printf("%-19s %-19s %-19s %-19s %-19s\n", c.getLastName(), c.getFirstName(), c.getGender(),
