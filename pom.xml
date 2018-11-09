@@ -20,6 +20,7 @@
     <properties>
         <ver.java>1.8</ver.java>
         <ver.junit>4.12</ver.junit>
+        <ver.swagger>2.8.0</ver.swagger>
         <ver.spring>5.1.2.RELEASE</ver.spring>
         <ver.springboot>2.1.0.RELEASE</ver.springboot>
         <ver.javadoc-plugin>2.10.4</ver.javadoc-plugin>
@@ -40,9 +41,24 @@
                 <version>${ver.springboot}</version>
             </dependency>
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-rest</artifactId>
+                <version>${ver.springboot}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${ver.spring}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${ver.swagger}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${ver.swagger}</version>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>
